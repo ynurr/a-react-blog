@@ -15,10 +15,22 @@ function App() {
       <div className="black-nav">
         <div>ReactBlog</div>
       </div>
+
+      <button onClick={()=>{
+        let copy = [...글제목];
+        copy.sort();
+        글제목변경(copy);
+      }}>정렬버튼</button>
+
+      <button onClick={()=>{
+        let copy = [...글제목]; // array와 object를 다룰 때는 원본을 보존하는 것이 좋다.
+        copy[0] = '여자코트 추천';
+        글제목변경(copy);
+      }}>수정버튼</button>
+
       <div className="list">
         <h4>{글제목[0]} <span onClick={()=>{ 따봉변경(따봉+1) }}>👍</span> {따봉} </h4>
         <p>2월 17일 발행</p>
-        <button onClick={()=>{ 글제목변경(['여자코트 추천', '강남 우동맛집', '파이썬독학']) }}>수정버튼</button>
       </div>
       <div className="list">
         <h4>{글제목[1]}</h4>
