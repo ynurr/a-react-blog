@@ -40,8 +40,21 @@ function App() {
         <h4>{글제목[2]}</h4>
         <p>2월 17일 발행</p>
       </div>
+
+      <Modal></Modal>
+      
     </div>
   );
+}
+
+function Modal() { // 다른 function 밖에 만들어야 한다.
+  return ( // retrun (안에서는 하나의 태그로 시작해서 하나의 태그로 끝나야 한다.)
+    <div className="modal">
+      <h4>제목</h4>
+      <p>날짜</p>
+      <p>상세내용</p>
+    </div>
+  )
 }
 
 export default App;
