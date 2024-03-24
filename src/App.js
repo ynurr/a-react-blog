@@ -8,9 +8,11 @@ function App() {
 
   let post = '강남 우동 맛집';
   let [글제목, 글제목변경] = useState(['남자코트 추천','강남 우동맛집','파이썬독학']);
+  let [글제목1, b] = useState(['남자코트 추천','강남 우동맛집','파이썬독학']);
   let [따봉, 따봉변경] = useState([0,0,0]);
   let [modal, setModal] = useState(false);
   let [title, setTitle] = useState(0);
+  let [입력값, 입력값변경] = useState('');
   
   return (
     <div className="App">
@@ -48,17 +50,33 @@ function App() {
           return (
             <div className="list" >
               <h4 onClick={()=>{ setModal(true); setTitle(i) }}>{ a } 
-                <span onClick={()=>{
+                <span onClick={(e)=>{ 
+                  e.stopPropagation() // 이벤트 버블링 막아줌
                   let copy = [...따봉];
                   copy[i] = copy[i] + 1;
                   따봉변경(copy);
                 }}>👍</span> {따봉[i]}
               </h4>
               <p>2월 17일 발행</p>
+              <button onClick={()=>{
+                let copy = [...글제목];
+                copy.splice(i, 1);
+                글제목변경(copy);
+              }}>삭제</button>
             </div>
           )
         })
       }
+
+      <input onChange={(e)=>{ 
+        입력값변경(e.target.value);
+        console.log(입력값);
+      }}/>
+      <button onClick={()=>{
+        let copy = [...글제목];
+        copy.unshift(입력값);
+        글제목변경(copy);
+      }}>글발행</button>
 
       {
         modal == true ? <Modal title={title} 글제목변경={글제목변경} color="#d7dcf5" 글제목={글제목}/> : null
