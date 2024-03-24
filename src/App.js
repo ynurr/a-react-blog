@@ -2,7 +2,7 @@
 
 import logo from './logo.svg';
 import './App.css';
-import { useState } from 'react';
+import React, { useState } from 'react';
 
 function App() {
 
@@ -82,6 +82,8 @@ function App() {
         modal == true ? <Modal title={title} 글제목변경={글제목변경} color="#d7dcf5" 글제목={글제목}/> : null
       }
       
+      <Modal2></Modal2>
+
     </div>
   );
 }
@@ -95,6 +97,26 @@ function Modal(props) { // 다른 function 밖에 만들어야 한다.
       <button onClick={()=>{ props.글제목변경(['여자코트 추천','강남 우동맛집','파이썬독학']) }}>글수정</button>
     </div>
   )
+}
+
+class Modal2 extends React.Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      name : 'kim',
+      age : 20
+    }
+  }
+
+  render(){
+    return (
+      <div>안녕 { this.state.age }
+        <button onClick={()=>{
+          this.setState({age : 21})
+        }}>버튼</button>
+      </div>
+    )
+  }
 }
 
 export default App;
