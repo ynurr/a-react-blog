@@ -60,19 +60,20 @@ function App() {
       }
 
       {
-        modal == true ? <Modal/> : null
+        modal == true ? <Modal 글제목변경={글제목변경} color="#d7dcf5" 글제목={글제목}/> : null
       }
       
     </div>
   );
 }
 
-function Modal() { // 다른 function 밖에 만들어야 한다.
+function Modal(props) { // 다른 function 밖에 만들어야 한다.
   return ( // retrun (안에서는 하나의 태그로 시작해서 하나의 태그로 끝나야 한다.)
-    <div className="modal">
-      <h4>제목</h4>
+    <div className="modal" style={{background : props.color}}>
+      <h4>{props.글제목[0]}</h4>
       <p>날짜</p>
       <p>상세내용</p>
+      <button onClick={()=>{ props.글제목변경(['여자코트 추천','강남 우동맛집','파이썬독학']) }}>글수정</button>
     </div>
   )
 }
